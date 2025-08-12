@@ -1,0 +1,43 @@
+# Use the official .NET 10 preview runtime as base image
+FROM mcr.microsoft.com/dotnet/nightly/aspnet:10.0.0-preview.7 AS base
+WORKDIR /app
+EXPOSE 8080
+
+# Create directories for file uploads
+RUN mkdir -p /app/uploads /app/temp /app/logs && \
+    chmod 755 /app/uploads /app/temp /app/logs
+
+# Use the SDK image to build the application
+FROM mcr.microsoft.com/dotnet/nightly/sdk:10.0-preview AS build
+WORKDIR /src
+
+# Copy project file and restore dependencies
+COPY DocumentUploadAPI.csproj .
+RUN dotnet restore "DocumentUploadAPI.csproj"
+
+# Copy source code and build
+COPY . .
+RUN dotnet build "DocumentUploadAPI.csproj" -c Release -o /app/build
+
+# Publish the application
+FROM build AS publish
+RUN dotnet publish "DocumentUploadAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Final stage - runtime image
+FROM base AS final
+WORKDIR /app
+
+# Copy published application
+COPY --from=publish /app/publish .
+
+# Create a non-root user for security
+RUN groupadd -r appuser && useradd -r -g appuser appuser && \
+    chown -R appuser:appuser /app
+
+USER appuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/health || exit 1
+
+ENTRYPOINT ["dotnet", "DocumentUploadAPI.dll"]

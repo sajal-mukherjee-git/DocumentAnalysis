@@ -1,0 +1,9 @@
+This is a test document for the Document Upload API.
+
+Content:
+- Document upload functionality
+- File validation
+- Storage management
+- API response handling
+
+Created: August 1, 2025

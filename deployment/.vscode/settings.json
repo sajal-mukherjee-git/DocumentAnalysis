@@ -1,0 +1,16 @@
+{
+  "debug.openDebug": "openOnDebugBreak",
+  "docker.defaultRegistryPath": "",
+  "docker.dockerComposeBuild": true,
+  "docker.dockerComposeDetached": true,
+  "files.associations": {
+    "docker-compose*.yml": "dockercompose",
+    "docker-compose*.yaml": "dockercompose"
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+      "docker-compose*.yml",
+      "docker-compose*.yaml"
+    ]
+  }
+}

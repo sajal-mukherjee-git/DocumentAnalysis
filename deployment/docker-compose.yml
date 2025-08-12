@@ -1,0 +1,6 @@
+services:
+  documentuploadapi:
+    image: ${DOCKER_REGISTRY-}documentuploadapi
+    build:
+      context: ..
+      dockerfile: DocumentUploadAPI/Dockerfile

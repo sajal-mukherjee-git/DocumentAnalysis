@@ -1,0 +1,21 @@
+# Docker ignore file for .NET application
+bin/
+obj/
+out/
+.vs/
+.vscode/
+*.user
+*.log
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+README.md
+.env
+*/bin
+*/obj
+**/.toolstarget
+uploads/
+temp/
+logs/

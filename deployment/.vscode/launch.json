@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🚀 Docker Compose: Development",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/debug.js",
+      "preLaunchTask": "docker-compose-up",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "🏭 Docker Compose: Production",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/debug.js",
+      "preLaunchTask": "docker-compose-production",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
