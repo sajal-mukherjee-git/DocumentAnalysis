@@ -1,7 +1,5 @@
 # Document Upload API
-
-A .NET 10 Minimal API application for document upload operations, designed to run in Docker containers with a clean layered architecture suitable for microservices.
-
+Thiss is an ongoing  implementation of Document Analysis Project
 ## Features
 
 - **Document Upload**: Single POST endpoint for uploading documents
