@@ -1,5 +1,5 @@
 # Document Upload API
-Thiss is an ongoing  implementation of Document Analysis Project
+This is an ongoing  implementation of Document Analysis Project
 ## Features
 
 - **Document Upload**: Single POST endpoint for uploading documents
